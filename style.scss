@@ -1,0 +1,28 @@
+$primary: #4e79a7;
+$secondary: #f28e2b;
+$danger: #e15759;
+$info: #76b7b2;
+$success: #59a14f;
+$warning: #edc948;
+$tableau7: #b07aa1;
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+body {
+  height: 100vh;
+}
+
+.container{
+  height: 100vh;
+  width: 100%;
+  max-width: 100%;
+}
+
+.overview{
+  height: 100vh;
+}
+
+.section-title{
+  font-size:18px;
+}
