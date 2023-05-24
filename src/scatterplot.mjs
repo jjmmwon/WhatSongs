@@ -16,7 +16,7 @@ export function scatterplot(data) {
     .range([height, 0])
     .domain(d3.extent(data, (d) => d.y).map((d) => d * 1.01));
 
-  const labelScale = d3
+  const zScale = d3
     .scaleOrdinal()
     .range(d3.schemeTableau10)
     .domain(
@@ -46,7 +46,7 @@ export function scatterplot(data) {
     .attr("opacity", 0.7)
     .attr("cx", (d) => xScale(d.x))
     .attr("cy", (d) => yScale(d.y))
-    .attr("fill", (d) => labelScale(d.genre));
+    .attr("fill", (d) => zScale(d.genre));
 
   function update() {
     // update circles
