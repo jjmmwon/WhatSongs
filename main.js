@@ -1,7 +1,7 @@
 import "./style.scss";
 import * as d3 from "d3";
 
-import { observer } from "./src/observer.mjs";
+import { observer } from "./src/observer.js";
 
 const Observer = observer();
 

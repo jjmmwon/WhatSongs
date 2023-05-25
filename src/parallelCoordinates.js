@@ -1,9 +1,9 @@
 import * as d3 from "d3";
 
 export function parallelCoordinates(data) {
-  const margin = { top: 60, right: 20, bottom: 20, left: 20 };
-  const width = 640 - margin.left - margin.right;
-  const height = 320 - margin.top - margin.bottom;
+  const margin = { top: 60, right: 200, bottom: 60, left: 60 };
+  const width = 960 - margin.left - margin.right;
+  const height = 420 - margin.top - margin.bottom;
   const dimensions = [
     "duration_ms",
     "year",
@@ -27,7 +27,7 @@ export function parallelCoordinates(data) {
   activeDims.forEach((dim) => {
     yScale[dim] = d3
       .scaleLinear()
-      .domain(d3.extent(data, (d) => d[dim]))
+      .domain(d3.extent(data, (d) => d[dim]).map((d) => d * 1.03))
       .range([height, 0]);
   });
   const zScale = d3
@@ -68,7 +68,6 @@ export function parallelCoordinates(data) {
 
     axes
       .selectAll("g.axis")
-      // .transition()
       .data(activeDims)
       .join("g")
       .attr("class", "axis")
@@ -79,7 +78,6 @@ export function parallelCoordinates(data) {
 
     titles
       .selectAll("text")
-      // .transition()
       .data(activeDims)
       .join("text")
       .attr("transform", (d) => `translate(${xScale(d)}, -10)`)
@@ -90,7 +88,6 @@ export function parallelCoordinates(data) {
 
     lines
       .selectAll("path")
-      // .transition()
       .data(activeItems)
       .join("path")
       .attr("d", polyline)

@@ -7,22 +7,17 @@ $warning: #edc948;
 $tableau7: #b07aa1;
 
 @import "../node_modules/bootstrap/scss/bootstrap";
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
 
 body {
   height: 100vh;
 }
 
-.container{
-  height: 100vh;
+.container {
   width: 100%;
   max-width: 100%;
 }
 
-.overview{
-  height: 100vh;
-}
-
-.section-title{
-  font-size:18px;
+.section-title {
+  font-size: 18px;
 }

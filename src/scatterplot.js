@@ -1,9 +1,9 @@
 import * as d3 from "d3";
 
 export function scatterplot(data) {
-  const margin = { top: 20, right: 120, bottom: 20, left: 10 };
-  const width = 340;
-  const height = 340;
+  const margin = { top: 10, right: 90, bottom: 10, left: 0 };
+  const width = 310;
+  const height = 310;
 
   // construct scales
   const xScale = d3
@@ -37,6 +37,13 @@ export function scatterplot(data) {
     .append("g")
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
+  const legends = svg
+    .append("g")
+    .attr(
+      "transform",
+      `translate(${margin.left + width + 20}, ${margin.top + 210})`
+    );
+
   const circles = container.append("g");
   circles
     .selectAll("circle")
@@ -47,6 +54,29 @@ export function scatterplot(data) {
     .attr("cx", (d) => xScale(d.x))
     .attr("cy", (d) => yScale(d.y))
     .attr("fill", (d) => zScale(d.genre));
+
+  const legendRects = legends.append("g");
+  const legendTexts = legends.append("g");
+
+  legendRects
+    .selectAll("rect")
+    .data(zScale.domain())
+    .join("rect")
+    .attr("x", 0)
+    .attr("y", (d, i) => i * 15)
+    .attr("width", 10)
+    .attr("height", 10)
+    .attr("fill", (d) => zScale(d));
+
+  legendTexts
+    .selectAll("text")
+    .data(zScale.domain())
+    .join("text")
+    .attr("x", 15)
+    .attr("y", (d, i) => i * 15 + 10)
+    .text((d) => d)
+    .attr("font-size", 10)
+    .attr("text-anchor", "start");
 
   function update() {
     // update circles
