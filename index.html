@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WhatSongs</title>
+    <script type="module" crossorigin src="/WhatSongs/assets/index-4135de11.js"></script>
+    <link rel="stylesheet" href="/WhatSongs/assets/index-a688beee.css">
+  </head>
+  <body class="bg-light h-100">
+    <header class="px-2">
+      <div class="navbar-brand fw-bold px-3 py-2" style="font-size: 24px">
+        WhatSongs
+      </div>
+    </header>
+    <main class="container" style="height: 100vh">
+      <div class="row">
+        <div class="col-3">
+          <div class="row">
+            <div class="ps-1 pe-0">
+              <div
+                class="bg-white rounded-3 overflow-auto"
+                style="height: 90vh"
+              >
+                <table
+                  class="table table-striped text-center"
+                  style="font-size: 15px"
+                >
+                  <thead>
+                    <tr>
+                      <th>Artist</th>
+                      <th>Title</th>
+                    </tr>
+                  </thead>
+                  <tbody class="table-body"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="row mb-2">
+            <div class="col-6 pe-1">
+              <div class="bg-white rounded-3">
+                <div class="section-title p-1 ps-3 pt-2">
+                  Item Distribution View
+                </div>
+                <div class="SP d-flex flex-column align-items-center p-1"></div>
+              </div>
+            </div>
+            <div class="col-6 p-1 pt-0 pb-0">
+              <div class="bg-white rounded-3" style="height: 100%">
+                <div class="section-title p-1 ps-3 pt-2">
+                  Attribute Distribution View
+                </div>
+                <div class="ps-3">
+                  <select
+                    id="attr-selector"
+                    class="form-select"
+                    aria-label="Default select example"
+                    style="width: 200px; height: 35px; font-size: 15px"
+                  >
+                    <option selected value="duration_ms">duration_ms</option>
+                    <option value="danceability">danceability</option>
+                    <option value="tempo">tempo</option>
+                    <option value="energy">energy</option>
+                    <option value="popularity">popularity</option>
+                    <option value="loudness">loudness</option>
+                    <option value="acousticness">acousticness</option>
+                    <option value="speechiness">speechiness</option>
+                    <option value="instrumentalness">instrumentalness</option>
+                    <option value="liveness">liveness</option>
+                    <option value="valence">valence</option>
+                  </select>
+                </div>
+                <div class="HG"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 pe-1">
+              <div class="bg-white rounded-3" style="height: 100%">
+                <div class="section-title p-1 ps-3 pt-2">
+                  Attribute Relationship View
+                </div>
+                <div class="PC d-flex flex-column align-items-center p-1"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="row">
+            <div class="px-1">
+              <div
+                class="bg-white rounded-3 overflow-auto"
+                style="height: 90vh"
+              >
+                <div class="section-title p-1 ps-3 pt-2">Trend View</div>
+                <div
+                  class="detailView d-flex flex-column align-items-center"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    
+  </body>
+</html>
