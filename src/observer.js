@@ -45,6 +45,7 @@ export function observer() {
 
     sp = scatterplot(data, DR, handlers);
     pc = parallelCoordinates(data);
+    pc.update();
     st = songsTable(data, handlers);
     lc = attrs.map((attr) => lineChart(data, attr));
     hg = histogram(data, handlers);
@@ -62,8 +63,9 @@ export function observer() {
 
   function brush() {
     sp.update();
-    pc.update();
+    pc.brush();
     st.update();
+    st.mouseout();
     return this;
   }
   function endEvent() {
@@ -101,9 +103,14 @@ export function observer() {
     );
   }
 
+  function changeDims(activeDims) {
+    pc.update(activeDims);
+  }
+
   return {
     update: brush,
     initialize,
     changeAttr,
+    changeDims,
   };
 }

@@ -59,7 +59,8 @@ export function songsTable(data, handlers) {
   }
 
   function mouseout() {
-    rows.attr("style", null);
+    console.log("mouseout");
+    rows.attr("style", "background-color: initial;");
   }
 
   function reset() {
