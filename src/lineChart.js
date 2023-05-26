@@ -44,10 +44,11 @@ export function lineChart(data, attr) {
     .domain(
       d3
         .extent(means.map((d) => d.mean))
-        .map((d, i) => (i ? d * 1.03 : d * 0.97))
+        .map((d, i) =>
+          i ? (d > 0 ? d * 1.03 : d * 0.97) : d > 0 ? d * 0.97 : d * 1.03
+        )
     )
     .range([height, 0]);
-  console.log(means);
 
   xAxis.call(d3.axisBottom(xScale));
   yAxis.call(d3.axisLeft(yScale));
@@ -62,7 +63,7 @@ export function lineChart(data, attr) {
     .append("path")
     .attr("d", polyline(means))
     .attr("fill", "none")
-    .attr("stroke", "steelblue")
+    .attr("stroke", d3.schemeCategory10[0])
     .attr("stroke-width", 1);
 
   return {

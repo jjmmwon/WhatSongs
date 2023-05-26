@@ -6,21 +6,20 @@ export function parallelCoordinates(data) {
   const height = 420 - margin.top - margin.bottom;
   const dimensions = [
     "duration_ms",
-    "year",
-    "popularity",
     "danceability",
-    "energy",
-    "loudness",
-    "speechiness",
-    "acousticness",
-    "instrumentalness",
-    "valence",
     "tempo",
+    "energy",
+    "popularity",
+    "loudness",
+    "acousticness",
+    "speechiness",
+    "instrumentalness",
+    "liveness",
+    "valence",
   ];
 
   // construct scales
   let activeDims = ["popularity", "danceability", "energy", "acousticness"];
-  let activeItems = data;
 
   const xScale = d3.scalePoint().range([0, width]).domain(activeDims);
   const yScale = {};
@@ -52,53 +51,62 @@ export function parallelCoordinates(data) {
     .append("g")
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-  const axes = container.append("g");
-  const titles = container.append("g");
-  const lines = container.append("g");
+  let polyline = (d) => {
+    return d3.line()(
+      activeDims.map((dim) => [xScale(dim), yScale[dim](d[dim])])
+    );
+  };
 
-  function update(dims, items) {
-    activeItems = items ? items : activeItems;
-    activeDims = dims ? dims : activeDims;
+  const axes = container
+    .append("g")
+    .selectAll("g.axis")
+    .data(activeDims)
+    .join("g")
+    .attr("class", "axis")
+    .attr("transform", (d) => `translate(${xScale(d)}, 0)`)
+    .each(function (d) {
+      d3.select(this).call(d3.axisLeft(yScale[d]));
+    });
 
-    let polyline = (d) => {
-      return d3.line()(
-        activeDims.map((dim) => [xScale(dim), yScale[dim](d[dim])])
-      );
-    };
+  const titles = container
+    .append("g")
+    .selectAll("text")
+    .data(activeDims)
+    .join("text")
+    .attr("transform", (d) => `translate(${xScale(d)}, -10)`)
+    .text((d) => d)
+    .attr("text-anchor", "middle")
+    .attr("font-size", 10)
+    .attr("dy", "-.8em");
 
-    axes
-      .selectAll("g.axis")
-      .data(activeDims)
-      .join("g")
-      .attr("class", "axis")
-      .attr("transform", (d) => `translate(${xScale(d)}, 0)`)
-      .each(function (d) {
-        d3.select(this).call(d3.axisLeft(yScale[d]));
-      });
+  const lines = container
+    .append("g")
+    .selectAll("path")
+    .data(data)
+    .join("path")
+    .attr("d", polyline)
+    .attr("fill", "none")
+    .attr("stroke", (d) => zScale(d.genre))
+    .attr("stroke-width", 1.5)
+    .attr("opacity", 0);
 
-    titles
-      .selectAll("text")
-      .data(activeDims)
-      .join("text")
-      .attr("transform", (d) => `translate(${xScale(d)}, -10)`)
-      .text((d) => d)
-      .attr("text-anchor", "middle")
-      .attr("font-size", 10)
-      .attr("dy", "-.8em");
-
+  function update() {
     lines
-      .selectAll("path")
-      .data(activeItems)
-      .join("path")
-      .attr("d", polyline)
-      .attr("fill", "none")
-      .attr("stroke", (d) => zScale(d.genre))
-      .attr("stroke-width", 1.5)
-      .attr("opacity", 0.8);
+      .transition()
+      .attr("opacity", (d) => (d.state == "selected" ? 0.7 : 0.01));
   }
 
+  function hover(idx) {
+    lines.transition().attr("opacity", (d, i) => (i == idx ? 0.7 : 0.01));
+  }
+
+  function reset() {
+    lines.transition().attr("opacity", 0);
+  }
   return {
     element: svg.node(),
     update,
+    reset,
+    hover,
   };
 }
