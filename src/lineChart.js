@@ -1,7 +1,7 @@
 import * as d3 from "d3";
 
 export function lineChart(data, attr) {
-  const margin = { top: 30, right: 20, bottom: 30, left: 50 };
+  const margin = { top: 30, right: 80, bottom: 30, left: 50 };
   const width = 400 - margin.left - margin.right;
   const height = 180 - margin.top - margin.bottom;
 
@@ -18,15 +18,24 @@ export function lineChart(data, attr) {
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom);
-  const title = svg
+  const attrText = svg
     .append("text")
-    .attr("x", 0)
-    .attr("y", 10)
+    .attr("x", 50)
+    .attr("y", 15)
     .text(attr)
     .attr("font-size", 12)
     .attr("font-weight", "bold")
-    .attr("text-anchor", "start")
+    .attr("text-anchor", "middle")
     .attr("alignment-baseline", "hanging");
+  const yearText = svg
+    .append("text")
+    .attr("x", width + margin.left + 10)
+    .attr("y", height + margin.top + 3)
+    .text("Year →")
+    .attr("font-size", 10)
+    .attr("text-anchor", "start")
+    .attr("alignment-baseline", "middle");
+
   const container = svg
     .append("g")
     .attr("transform", `translate(${margin.left}, ${margin.top})`);

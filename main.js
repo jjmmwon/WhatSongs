@@ -10,8 +10,8 @@ attrSelector.on("change", () => {
 });
 
 async function update() {
-  const data = await d3.csv("/data/data.csv", d3.autoType);
-  const DR = await d3.csv("/data/tsne.csv", d3.autoType);
+  const data = await d3.csv(`${config.base}/public/data/data.csv`, d3.autoType);
+  const DR = await d3.csv(`${config.base}/public/data/tsne.csv`, d3.autoType);
   Observer.initialize(data, DR);
 }
 
