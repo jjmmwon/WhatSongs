@@ -1,9 +1,9 @@
 import * as d3 from "d3";
 
 export function histogram(data, handlers) {
-  const margin = { top: 60, right: 30, bottom: 40, left: 60 };
-  const width = 520 - margin.left - margin.right;
-  const height = 360 - margin.top - margin.bottom;
+  const margin = { top: 20, right: 30, bottom: 40, left: 40 };
+  const width = 450 - margin.left - margin.right;
+  const height = 300 - margin.top - margin.bottom;
   let bins, xScale, yScale;
 
   const svg = d3

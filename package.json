@@ -8,7 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "predeploy": "vite build",
-    "deploy": "touch dist/.nojekyll && gh-pages -d dist --dotfiles"
+    "deploy_for_window": "echo. > dist\\.nojekyll & gh-pages -d dist --dotfiles",
+    "deploy_for_mac": "touch dist/.nojekyll && gh-pages -d dist --dotfiles"
   },
   "devDependencies": {
     "vite": "^4.3.2"

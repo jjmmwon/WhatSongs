@@ -72,8 +72,8 @@ export function lineChart(data, attr) {
     .append("path")
     .attr("d", polyline(means))
     .attr("fill", "none")
-    .attr("stroke", d3.schemeCategory10[0])
-    .attr("stroke-width", 1);
+    .attr("stroke", d3.schemeTableau10[7])
+    .attr("stroke-width", 2.5);
 
   return {
     element: div.node(),
