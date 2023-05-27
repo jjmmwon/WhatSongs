@@ -12,17 +12,17 @@ attrSelector.on("change", () => {
 });
 
 checkboxes.on("change", () => {
-  if (checkboxes.nodes().filter((c) => c.checked).length == 4) {
-    checkboxes
-      .nodes()
-      .filter((c) => !c.checked)
-      .forEach((c) => (c.disabled = true));
-  } else {
-    checkboxes
-      .nodes()
-      .filter((c) => !c.checked)
-      .forEach((c) => (c.disabled = false));
-  }
+  // if (checkboxes.nodes().filter((c) => c.checked).length == 4) {
+  //   checkboxes
+  //     .nodes()
+  //     .filter((c) => !c.checked)
+  //     .forEach((c) => (c.disabled = true));
+  // } else {
+  //   checkboxes
+  //     .nodes()
+  //     .filter((c) => !c.checked)
+  //     .forEach((c) => (c.disabled = false));
+  // }
   let activeDims = checkboxes
     .nodes()
     .filter((c) => c.checked)

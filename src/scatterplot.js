@@ -2,9 +2,9 @@ import * as d3 from "d3";
 import "d3-brush";
 
 export function scatterplot(data, DR, handlers) {
-  const margin = { top: 10, right: 90, bottom: 10, left: 0 };
-  const width = 310;
-  const height = 310;
+  const margin = { top: 40, right: 90, bottom: 10, left: 0 };
+  const width = 360;
+  const height = 360;
 
   // construct scales
   const xScale = d3

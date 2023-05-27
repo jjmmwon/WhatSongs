@@ -2,8 +2,8 @@ import * as d3 from "d3";
 
 export function parallelCoordinates(data) {
   const margin = { top: 60, right: 20, bottom: 60, left: 40 };
-  const width = 640 - margin.left - margin.right;
-  const height = 420 - margin.top - margin.bottom;
+  const width = 800 - margin.left - margin.right;
+  const height = 520 - margin.top - margin.bottom;
 
   // construct scales
   const Dims = [
