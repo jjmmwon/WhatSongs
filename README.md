@@ -29,8 +29,8 @@ pnpm run dev
 Then explore the data through the system.
 
 # Acknowledgement 
-The dataset used in this project was obtained from Kaggle's Paradisejoy repository, specifically the '[Top Hits Spotify from 2000-2019]' dataset.
+The dataset used in this project was obtained from Kaggle's Paradisejoy repository, specifically the ['Top Hits Spotify from 2000-2019'] dataset.
 
 
-[Top Hits Spotify from 2000-2019]: <https://www.kaggle.com/datasets/paradisejoy/top-hits-spotify-from-20002019>
+['Top Hits Spotify from 2000-2019']: <https://www.kaggle.com/datasets/paradisejoy/top-hits-spotify-from-20002019>
 [Web Demo]: <https://jjmmwon.github.io/WhatSongs/>
